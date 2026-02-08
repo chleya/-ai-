@@ -1,0 +1,37 @@
+{
+  "critical_threshold": null,
+  "results": {
+    "0.0": {
+      "switches": 0,
+      "rate": 0.0
+    },
+    "0.1": {
+      "switches": 0,
+      "rate": 0.0
+    },
+    "0.5": {
+      "switches": 0,
+      "rate": 0.0
+    },
+    "1.0": {
+      "switches": 0,
+      "rate": 0.0
+    },
+    "2.0": {
+      "switches": 0,
+      "rate": 0.0
+    },
+    "5.0": {
+      "switches": 0,
+      "rate": 0.0
+    },
+    "10.0": {
+      "switches": 0,
+      "rate": 0.0
+    }
+  },
+  "basins": {
+    "A": -1.0,
+    "B": 1.0
+  }
+}

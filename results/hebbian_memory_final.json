@@ -1,0 +1,10 @@
+{
+  "has_basins": true,
+  "bistable": true,
+  "memory": true,
+  "capacity_estimate": 7.000000000000001,
+  "basin_distribution": {
+    "A": 3,
+    "B": 7
+  }
+}

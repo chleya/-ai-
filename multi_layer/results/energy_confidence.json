@@ -1,0 +1,18 @@
+{
+  "0.1": {
+    "consensus": 40,
+    "correct": 20
+  },
+  "0.2": {
+    "consensus": 10,
+    "correct": 0
+  },
+  "0.3": {
+    "consensus": 40,
+    "correct": 10
+  },
+  "0.5": {
+    "consensus": 40,
+    "correct": 10
+  }
+}

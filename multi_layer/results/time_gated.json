@@ -1,0 +1,14 @@
+{
+  "mw0_thresh50": 28,
+  "mw0_thresh100": 40,
+  "mw0_thresh150": 32,
+  "mw0_thresh200": 36,
+  "mw2_thresh50": 48,
+  "mw2_thresh100": 56,
+  "mw2_thresh150": 52,
+  "mw2_thresh200": 52,
+  "mw3_thresh50": 36,
+  "mw3_thresh100": 36,
+  "mw3_thresh150": 36,
+  "mw3_thresh200": 40
+}

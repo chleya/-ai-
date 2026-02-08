@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-02-07T12:01:45.647356",
+  "config": {
+    "sigma": 0.5
+  },
+  "results": {
+    "gain_3.0": {
+      "gain": 3.0,
+      "sigma": 0.5,
+      "final_variance": 0.04773149650266886,
+      "final_target": 0.04775136330421854,
+      "oscillation": 1.5115109732606866,
+      "convergence": 0.0011449872906603552,
+      "variance_ratio": 1.136033975204472,
+      "instability": "OSCILLATING",
+      "stable": false
+    },
+    "gain_4.0": {
+      "gain": 4.0,
+      "sigma": 0.5,
+      "final_variance": 0.048168719513037146,
+      "final_target": 0.048416392355380526,
+      "oscillation": 1.5115262344140257,
+      "convergence": 1.4331703719217957e-16,
+      "variance_ratio": 1.1464401059758333,
+      "instability": "OSCILLATING",
+      "stable": false
+    },
+    "gain_5.0": {
+      "gain": 5.0,
+      "sigma": 0.5,
+      "final_variance": 0.04871047780098533,
+      "final_target": 0.04923463430112158,
+      "oscillation": 1.5115587646483668,
+      "convergence": 1.4093521770606834e-16,
+      "variance_ratio": 1.159334229700266,
+      "instability": "OSCILLATING",
+      "stable": false
+    },
+    "gain_6.0": {
+      "gain": 6.0,
+      "sigma": 0.5,
+      "final_variance": 0.049272516418348684,
+      "final_target": 0.050088303601669715,
+      "oscillation": 1.5115984753426588,
+      "convergence": 1.3853321843536975e-16,
+      "variance_ratio": 1.1727110356142816,
+      "instability": "OSCILLATING",
+      "stable": false
+    },
+    "gain_8.0": {
+      "gain": 8.0,
+      "sigma": 0.5,
+      "final_variance": 0.05033283032924747,
+      "final_target": 0.05171199608344691,
+      "oscillation": 1.5116483796742397,
+      "convergence": 0.0,
+      "variance_ratio": 1.1979470477953704,
+      "instability": "OSCILLATING",
+      "stable": false
+    }
+  },
+  "threshold": 3.0
+}

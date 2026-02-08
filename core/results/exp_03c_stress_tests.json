@@ -1,0 +1,101 @@
+{
+  "timestamp": "2026-02-07T07:33:15.932563",
+  "results": {
+    "baseline": {
+      "description": "Baseline (no perturbation)",
+      "analysis": {
+        "pre_shock_variance": 0.022022771638287208,
+        "post_shock_min_variance": 0.015013064235338533,
+        "post_shock_min_time": "5019",
+        "final_variance": 0.022069835312937228,
+        "recovery_ratio": 1.0021370459369519,
+        "recovery_time": 1,
+        "pre_shock_alpha": 0.6806838371795579,
+        "max_alpha": 0.6853882419004426,
+        "alpha_boost": 0.004704404720884625,
+        "survived": "True",
+        "robustness": "ROBUST"
+      }
+    },
+    "extreme_zero": {
+      "description": "Total Annihilation (state=0)",
+      "analysis": {
+        "pre_shock_variance": 0.022022771638287208,
+        "post_shock_min_variance": 0.01501301421062672,
+        "post_shock_min_time": "5019",
+        "final_variance": 0.02206983531293435,
+        "recovery_ratio": 1.0021370459368213,
+        "recovery_time": 1,
+        "pre_shock_alpha": 0.6806838371795579,
+        "max_alpha": 0.6853882236297939,
+        "alpha_boost": 0.0047043864502359645,
+        "survived": "True",
+        "robustness": "ROBUST"
+      }
+    },
+    "extreme_shrink_001": {
+      "description": "Extreme Shrink (state*=0.01)",
+      "analysis": {
+        "pre_shock_variance": 0.022022771638287208,
+        "post_shock_min_variance": 0.015013018106916428,
+        "post_shock_min_time": "5019",
+        "final_variance": 0.022069835312934556,
+        "recovery_ratio": 1.0021370459368306,
+        "recovery_time": 1,
+        "pre_shock_alpha": 0.6806838371795579,
+        "max_alpha": 0.6853882248691727,
+        "alpha_boost": 0.004704387689614786,
+        "survived": "True",
+        "robustness": "ROBUST"
+      }
+    },
+    "sustained_depress": {
+      "description": "Sustained Depression (\u03b1=0.3, 1000 steps)",
+      "analysis": {
+        "pre_shock_variance": 0.022022771638287208,
+        "post_shock_min_variance": 0.0032016417933418335,
+        "post_shock_min_time": "5000",
+        "final_variance": 0.022069835350919612,
+        "recovery_ratio": 1.0021370476616387,
+        "recovery_time": 113,
+        "pre_shock_alpha": 0.6806838371795579,
+        "max_alpha": 0.7442673194188669,
+        "alpha_boost": 0.06358348223930899,
+        "survived": "True",
+        "robustness": "ROBUST"
+      }
+    },
+    "noise_jump_5x": {
+      "description": "Noise Jump (\u03c3: 0.5\u21925.0)",
+      "analysis": {
+        "pre_shock_variance": 0.022022771638287208,
+        "post_shock_min_variance": 0.015497949426508706,
+        "post_shock_min_time": "5111",
+        "final_variance": 0.02198752708160118,
+        "recovery_ratio": 0.9983996311969764,
+        "recovery_time": 1,
+        "pre_shock_alpha": 0.6806838371795579,
+        "max_alpha": 0.6861755897361275,
+        "alpha_boost": 0.005491752556569529,
+        "survived": "True",
+        "robustness": "ROBUST"
+      }
+    },
+    "noise_jump_10x": {
+      "description": "Extreme Noise Jump (\u03c3: 0.5\u219210.0)",
+      "analysis": {
+        "pre_shock_variance": 0.022022771638287208,
+        "post_shock_min_variance": 0.015497949426508706,
+        "post_shock_min_time": "5111",
+        "final_variance": 0.02198752708160118,
+        "recovery_ratio": 0.9983996311969764,
+        "recovery_time": 1,
+        "pre_shock_alpha": 0.6806838371795579,
+        "max_alpha": 0.6861755897361275,
+        "alpha_boost": 0.005491752556569529,
+        "survived": "True",
+        "robustness": "ROBUST"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "tanh": {
+    "variance": 0.27735213212587106,
+    "memory_slope": 6.098950255748033e-06,
+    "half_life": Infinity
+  },
+  "relu": {
+    "variance": 3.2749909846245117e+102,
+    "memory_slope": 0.011989701527828588,
+    "half_life": Infinity
+  },
+  "leaky_relu": {
+    "variance": 6.770948697384324e+110,
+    "memory_slope": 0.012959755452883262,
+    "half_life": Infinity
+  },
+  "swish": {
+    "variance": 0.11308876835574996,
+    "memory_slope": -1.238983503123187e-05,
+    "half_life": 55944.8272565925
+  }
+}

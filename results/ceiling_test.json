@@ -1,0 +1,32 @@
+{
+  "0.02": {
+    "final_variance": 0.03321034143316659,
+    "final_target": 0.02777380170632817,
+    "target_drift": 0.00777380170632817,
+    "climbed": "YES"
+  },
+  "0.03": {
+    "final_variance": 0.042170890718022574,
+    "final_target": 0.039638729006947496,
+    "target_drift": 0.009638729006947497,
+    "climbed": "YES"
+  },
+  "0.04": {
+    "final_variance": 0.04671363339836053,
+    "final_target": 0.04643875821479995,
+    "target_drift": 0.006438758214799951,
+    "climbed": "YES"
+  },
+  "0.05": {
+    "final_variance": 0.04914486001173546,
+    "final_target": 0.05,
+    "target_drift": 0.0,
+    "climbed": "NO"
+  },
+  "0.06": {
+    "final_variance": 0.05550847019128341,
+    "final_target": 0.06,
+    "target_drift": 0.0,
+    "climbed": "NO"
+  }
+}

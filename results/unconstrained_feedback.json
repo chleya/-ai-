@@ -1,0 +1,32 @@
+{
+  "20": {
+    "control": {
+      "final_variance": 0.2848931122125
+    },
+    "feedback": {
+      "final_variance": 0.2848931122125,
+      "final_target": 0.27591435843047163,
+      "improvement": 0.0
+    }
+  },
+  "50": {
+    "control": {
+      "final_variance": 0.2737201692993176
+    },
+    "feedback": {
+      "final_variance": 0.2737201692993176,
+      "final_target": 0.25201820250352924,
+      "improvement": 0.0
+    }
+  },
+  "100": {
+    "control": {
+      "final_variance": 0.2835904409903411
+    },
+    "feedback": {
+      "final_variance": 0.2835904409903411,
+      "final_target": 0.26012370160701526,
+      "improvement": 0.0
+    }
+  }
+}

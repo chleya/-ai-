@@ -1,0 +1,30 @@
+{
+  "0.0": {
+    "actual": -0.141,
+    "interfere": false
+  },
+  "0.2": {
+    "actual": -0.237,
+    "interfere": true
+  },
+  "0.4": {
+    "actual": -0.092,
+    "interfere": true
+  },
+  "0.6": {
+    "actual": 0.07,
+    "interfere": false
+  },
+  "0.8": {
+    "actual": 0.22,
+    "interfere": true
+  },
+  "0.9": {
+    "actual": 0.359,
+    "interfere": true
+  },
+  "0.95": {
+    "actual": 0.465,
+    "interfere": true
+  }
+}

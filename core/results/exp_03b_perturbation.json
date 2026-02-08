@@ -1,0 +1,143 @@
+{
+  "timestamp": "2026-02-07T07:25:21.602645",
+  "sigma": 0.5,
+  "perturbation": "state_shrink",
+  "analyses": [
+    {
+      "pre_shock_variance": 0.022022771638287208,
+      "post_shock_min_variance": 0.015013080008114322,
+      "post_shock_min_time": "5019",
+      "final_variance": 0.02200394530422183,
+      "recovery_ratio": 0.9991451423837747,
+      "recovery_time_steps": 1,
+      "pre_shock_alpha": 0.6806838371795579,
+      "max_alpha_during_recovery": 0.6853882446480509,
+      "alpha_boost": 0.004704407468492988,
+      "recovery_success": "True",
+      "run": 1
+    },
+    {
+      "pre_shock_variance": 0.02208876326073525,
+      "post_shock_min_variance": 0.016008026983732007,
+      "post_shock_min_time": "5038",
+      "final_variance": 0.02208492504272424,
+      "recovery_ratio": 0.9998262366269354,
+      "recovery_time_steps": 0,
+      "pre_shock_alpha": 0.6791919516823761,
+      "max_alpha_during_recovery": 0.6840183436662265,
+      "alpha_boost": 0.0048263919838503755,
+      "recovery_success": "True",
+      "run": 2
+    },
+    {
+      "pre_shock_variance": 0.022017085524735504,
+      "post_shock_min_variance": 0.014098238964060466,
+      "post_shock_min_time": "5050",
+      "final_variance": 0.021957271073520843,
+      "recovery_ratio": 0.9972832711601424,
+      "recovery_time_steps": 0,
+      "pre_shock_alpha": 0.6813396835711427,
+      "max_alpha_during_recovery": 0.6844552974052938,
+      "alpha_boost": 0.003115613834151043,
+      "recovery_success": "True",
+      "run": 3
+    },
+    {
+      "pre_shock_variance": 0.022052104065114677,
+      "post_shock_min_variance": 0.01575333462998748,
+      "post_shock_min_time": "5079",
+      "final_variance": 0.022099718099919414,
+      "recovery_ratio": 1.0021591606254054,
+      "recovery_time_steps": 0,
+      "pre_shock_alpha": 0.6802835917447512,
+      "max_alpha_during_recovery": 0.6826368638029756,
+      "alpha_boost": 0.0023532720582244426,
+      "recovery_success": "True",
+      "run": 4
+    },
+    {
+      "pre_shock_variance": 0.022024414560202765,
+      "post_shock_min_variance": 0.015309933131780418,
+      "post_shock_min_time": "5093",
+      "final_variance": 0.021976924431563856,
+      "recovery_ratio": 0.9978437506927098,
+      "recovery_time_steps": 0,
+      "pre_shock_alpha": 0.6802309697657493,
+      "max_alpha_during_recovery": 0.6849121190701873,
+      "alpha_boost": 0.004681149304438081,
+      "recovery_success": "True",
+      "run": 5
+    },
+    {
+      "pre_shock_variance": 0.02205569902467621,
+      "post_shock_min_variance": 0.01436026162294706,
+      "post_shock_min_time": "5054",
+      "final_variance": 0.022083875021809585,
+      "recovery_ratio": 1.0012774928195134,
+      "recovery_time_steps": 0,
+      "pre_shock_alpha": 0.681997280843869,
+      "max_alpha_during_recovery": 0.6840937059632958,
+      "alpha_boost": 0.002096425119426759,
+      "recovery_success": "True",
+      "run": 6
+    },
+    {
+      "pre_shock_variance": 0.02194027832605274,
+      "post_shock_min_variance": 0.01737976424035773,
+      "post_shock_min_time": "5097",
+      "final_variance": 0.022045684175074822,
+      "recovery_ratio": 1.0048042165853894,
+      "recovery_time_steps": 0,
+      "pre_shock_alpha": 0.6821877183412032,
+      "max_alpha_during_recovery": 0.6859645652360364,
+      "alpha_boost": 0.0037768468948332634,
+      "recovery_success": "True",
+      "run": 7
+    },
+    {
+      "pre_shock_variance": 0.02196647756969891,
+      "post_shock_min_variance": 0.014191617537479159,
+      "post_shock_min_time": "5002",
+      "final_variance": 0.022015971412424645,
+      "recovery_ratio": 1.0022531533591899,
+      "recovery_time_steps": 0,
+      "pre_shock_alpha": 0.680580369131469,
+      "max_alpha_during_recovery": 0.6841014109483247,
+      "alpha_boost": 0.003521041816855641,
+      "recovery_success": "True",
+      "run": 8
+    },
+    {
+      "pre_shock_variance": 0.021930602629752244,
+      "post_shock_min_variance": 0.01490432581469783,
+      "post_shock_min_time": "5065",
+      "final_variance": 0.022070820042546117,
+      "recovery_ratio": 1.0063936871759123,
+      "recovery_time_steps": 0,
+      "pre_shock_alpha": 0.6806207142178191,
+      "max_alpha_during_recovery": 0.6845821544895418,
+      "alpha_boost": 0.003961440271722738,
+      "recovery_success": "True",
+      "run": 9
+    },
+    {
+      "pre_shock_variance": 0.021992407433428767,
+      "post_shock_min_variance": 0.012288084985497686,
+      "post_shock_min_time": "5003",
+      "final_variance": 0.02209232762547613,
+      "recovery_ratio": 1.0045433949125318,
+      "recovery_time_steps": 0,
+      "pre_shock_alpha": 0.6804691511849061,
+      "max_alpha_during_recovery": 0.6847580748361661,
+      "alpha_boost": 0.00428892365125999,
+      "recovery_success": "True",
+      "run": 10
+    }
+  ],
+  "summary": {
+    "recovery_ratio_mean": 1.0015529506341505,
+    "recovery_ratio_std": 0.0029094205230848205,
+    "alpha_boost_mean": 0.0037325512403255322,
+    "success_rate": 1.0
+  }
+}

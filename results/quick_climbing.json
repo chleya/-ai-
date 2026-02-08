@@ -1,0 +1,12 @@
+{
+  "0.03": {
+    "final_variance": 0.04050428164211122,
+    "final_target": 0.03734147579252761,
+    "target_drift": 0.007341475792527613
+  },
+  "0.05": {
+    "final_variance": 0.049134065556017605,
+    "final_target": 0.05,
+    "target_drift": 0.0
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "0.0": {
+    "consensus": 25,
+    "correct": 15,
+    "monitor_correct": 15
+  },
+  "0.5": {
+    "consensus": 40,
+    "correct": 20,
+    "monitor_correct": 20
+  },
+  "1.0": {
+    "consensus": 30,
+    "correct": 20,
+    "monitor_correct": 20
+  },
+  "2.0": {
+    "consensus": 55,
+    "correct": 35,
+    "monitor_correct": 35
+  },
+  "3.0": {
+    "consensus": 40,
+    "correct": 20,
+    "monitor_correct": 20
+  }
+}

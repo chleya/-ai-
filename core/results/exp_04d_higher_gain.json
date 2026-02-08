@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-02-07T11:42:53.650510",
+  "config": {
+    "sigma": 0.5
+  },
+  "results": {
+    "t0.04_m1.0": {
+      "target_init": 0.04,
+      "multiplier": 1.0,
+      "final_variance": 0.04745234323042153,
+      "final_target": 0.04739370448679956,
+      "target_drift": 0.00739370448679956,
+      "oscillation": 1.529992173764842,
+      "stable": "True",
+      "status": "OSCILLATING"
+    },
+    "t0.04_m1.5": {
+      "target_init": 0.04,
+      "multiplier": 1.5,
+      "final_variance": 0.047591485213546246,
+      "final_target": 0.047604805589640364,
+      "target_drift": 0.0076048055896403635,
+      "oscillation": 1.530009265392275,
+      "stable": "True",
+      "status": "OSCILLATING"
+    },
+    "t0.04_m2.0": {
+      "target_init": 0.04,
+      "multiplier": 2.0,
+      "final_variance": 0.04764939975475157,
+      "final_target": 0.04769242391732959,
+      "target_drift": 0.007692423917329591,
+      "oscillation": 1.5300117864687333,
+      "stable": "True",
+      "status": "OSCILLATING"
+    },
+    "t0.04_m3.0": {
+      "target_init": 0.04,
+      "multiplier": 3.0,
+      "final_variance": 0.04778199818561597,
+      "final_target": 0.047891467672368446,
+      "target_drift": 0.007891467672368445,
+      "oscillation": 1.5300263526606328,
+      "stable": "True",
+      "status": "OSCILLATING"
+    },
+    "t0.05_m1.0": {
+      "target_init": 0.05,
+      "multiplier": 1.0,
+      "final_variance": 0.04917560358481566,
+      "final_target": 0.04999999999999999,
+      "target_drift": -1.3877787807814457e-17,
+      "oscillation": 1.5301645851623498,
+      "stable": "True",
+      "status": "OSCILLATING"
+    },
+    "t0.05_m1.5": {
+      "target_init": 0.05,
+      "multiplier": 1.5,
+      "final_variance": 0.04917560358481566,
+      "final_target": 0.04999999999999999,
+      "target_drift": -1.3877787807814457e-17,
+      "oscillation": 1.5301645851623498,
+      "stable": "True",
+      "status": "OSCILLATING"
+    },
+    "t0.05_m2.0": {
+      "target_init": 0.05,
+      "multiplier": 2.0,
+      "final_variance": 0.04917560358481566,
+      "final_target": 0.04999999999999999,
+      "target_drift": -1.3877787807814457e-17,
+      "oscillation": 1.5301645851623498,
+      "stable": "True",
+      "status": "OSCILLATING"
+    },
+    "t0.05_m3.0": {
+      "target_init": 0.05,
+      "multiplier": 3.0,
+      "final_variance": 0.04917560358481566,
+      "final_target": 0.04999999999999999,
+      "target_drift": -1.3877787807814457e-17,
+      "oscillation": 1.5301645851623498,
+      "stable": "True",
+      "status": "OSCILLATING"
+    }
+  }
+}

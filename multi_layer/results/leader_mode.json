@@ -1,0 +1,22 @@
+{
+  "1.0": {
+    "consensus": 53,
+    "correct": 20
+  },
+  "2.0": {
+    "consensus": 33,
+    "correct": 26
+  },
+  "3.0": {
+    "consensus": 53,
+    "correct": 20
+  },
+  "5.0": {
+    "consensus": 66,
+    "correct": 13
+  },
+  "10.0": {
+    "consensus": 73,
+    "correct": 13
+  }
+}
