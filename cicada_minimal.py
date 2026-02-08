@@ -176,8 +176,7 @@ def run_comparison实验():
             'survival_rate': np.mean([r.survival_rate for r in all_results]),
             'reset_count': np.mean([r.reset_count for r in all_results]),
             'final_lambda': np.mean([r.final_lambda for r in all_results]),
-            'lambda_history': results[strategy]['lambda_history'] if strategy == 'fixed' 
-                             else all_results[0].lambda_max_history
+            'lambda_history': all_results[0].lambda_max_history
         }
         
         print(f"  存活率: {results[strategy]['survival_rate']:.1%}")
