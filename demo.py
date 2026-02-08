@@ -1,149 +1,186 @@
 #!/usr/bin/env python3
 """
-Cicada Protocol - Standalone Demo
-=================================
-This demo runs WITHOUT requiring pip install or complex setup.
-Just run: python demo.py
+Cicada Protocol - Simple Demo
+============================
+Shows WHY periodic reset is necessary for system stability.
 
-Shows how periodic reset prevents spectral radius explosion.
+Key insight:
+- Without reset: spectral radius (lambda_max) grows -> instability
+- With reset: lambda_max stays healthy -> stability
+
+Run: python demo.py
+
+Author: Chen Leiyang
+Date: 2026-02-08
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
-import os
 
-# Avoid tkinter warnings
-import warnings
-warnings.filterwarnings('ignore')
-plt.switch_backend('Agg')
 
-print("=" * 60)
-print("Cicada Protocol - Standalone Demo")
-print("=" * 60)
-print()
+# ═══════════════════════════════════════════════════════════════════════
+# Configuration
+# ═══════════════════════════════════════════════════════════════════════
 
-# =============================================================================
-# Minimal Implementation (inline to ensure it works)
-# =============================================================================
+CONFIG = {
+    'N': 100,              # System size (nodes)
+    'steps': 500,           # Evolution steps
+    'learning_rate': 0.05,  # Weight change rate
+    'seed': 42,            # Random seed
+}
 
-def run_demo(N=100, steps=500, lr=0.05, reset_interval=None, seed=42):
+
+# ═══════════════════════════════════════════════════════════════════════
+# Core Simulation
+# ═══════════════════════════════════════════════════════════════════════
+
+def simulate(N, steps, lr, reset_interval=None, seed=42):
     """
-    Run a demo without normalization - shows real spectral explosion.
+    Run one simulation with optional reset.
     
-    Args:
-        N: System size
-        steps: Evolution steps
-        lr: Learning rate
-        reset_interval: Reset interval (None = no reset)
-        seed: Random seed
+    Parameters
+    ----------
+    N : int
+        System size (number of nodes)
+    steps : int
+        Total simulation steps
+    lr : float
+        Learning rate
+    reset_interval : int, optional
+        Reset every N steps. None = no reset.
+    seed : int
+        Random seed
+        
+    Returns
+    -------
+    list
+        History of spectral radius over time
     """
     np.random.seed(seed)
-    
-    # Initialize small weights
-    W = np.random.randn(N, N) * 0.01
+    W = np.random.randn(N, N) * 0.01  # Start small
     history = []
     
     for t in range(steps):
-        # Random input
+        # 1. Random input
         s = np.random.randn(N)
-        s = s / (np.linalg.norm(s) + 1e-6)
+        s = s / np.linalg.norm(s)
         
-        # Hebbian update (causes explosion without normalization!)
+        # 2. Hebbian update (causes growth without reset!)
         W += lr * np.outer(s, s)
         
-        # NO normalization - this is the key!
-        
-        # Record spectral radius
+        # 3. Record spectral radius
         eigenvals = np.linalg.eigvalsh(W)
-        history.append(np.max(np.abs(eigenvals)))
+        lambda_max = np.max(np.abs(eigenvals))
+        history.append(lambda_max)
         
-        # Reset if interval specified
+        # 4. Reset (Cicada moment)
         if reset_interval and (t + 1) % reset_interval == 0:
             W = np.random.randn(N, N) * 0.01
     
     return history
 
 
-# =============================================================================
-# Run Demo
-# =============================================================================
-
-print("Configuration:")
-print(f"  N = 100")
-print(f"  steps = 500")
-print(f"  learning_rate = 0.05")
-print()
-print("Running experiments...")
-print()
-
-# Run three scenarios
-print("  1/3: No Reset...")
-history_no_reset = run_demo(N=100, steps=500, lr=0.05, reset_interval=None)
-
-print("  2/3: Reset every 100 steps...")
-history_reset_100 = run_demo(N=100, steps=500, lr=0.05, reset_interval=100)
-
-print("  3/3: Reset every 200 steps...")
-history_reset_200 = run_demo(N=100, steps=500, lr=0.05, reset_interval=200)
-
-print()
-print("-" * 60)
-print("RESULTS:")
-print(f"  No Reset     -> Final λ: {history_no_reset[-1]:.2f}")
-print(f"  Reset 100    -> Final λ: {history_reset_100[-1]:.2f} (↓{(1-history_reset_100[-1]/history_no_reset[-1])*100:.0f}%)")
-print(f"  Reset 200    -> Final λ: {history_reset_200[-1]:.2f} (↓{(1-history_reset_200[-1]/history_no_reset[-1])*100:.0f}%)")
-print()
-
-# =============================================================================
+# ═══════════════════════════════════════════════════════════════════════
 # Visualization
-# =============================================================================
+# ═══════════════════════════════════════════════════════════════════════
 
-print("Generating plot: cicada_demo_output.png")
+def plot(no_reset, reset_100, reset_200, save_path):
+    """Create comparison plots."""
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+    
+    # ── Left: Time series ───────────────────────────────────────
+    ax1.plot(no_reset, 'r-', lw=2, label='No Reset')
+    ax1.plot(reset_100, 'b-', lw=2, label='Reset 100')
+    ax1.plot(reset_200, 'g-', lw=2, label='Reset 200')
+    ax1.axhline(y=1.8, color='orange', ls='--', lw=2, label='Healthy (1.8)')
+    ax1.set_xlabel('Steps')
+    ax1.set_ylabel('Spectral Radius (λ_max)')
+    ax1.set_title('Spectral Radius Over Time')
+    ax1.legend()
+    ax1.grid(True, alpha=0.3)
+    
+    # ── Right: Bar chart ─────────────────────────────────────────
+    names = ['No Reset', 'Reset 100', 'Reset 200']
+    values = [no_reset[-1], reset_100[-1], reset_200[-1]]
+    colors = ['red', 'blue', 'green']
+    
+    bars = ax2.bar(names, values, color=colors, edgecolor='black', alpha=0.8)
+    ax2.axhline(y=1.8, color='orange', ls='--', lw=2)
+    ax2.set_ylabel('Final λ_max')
+    ax2.set_title('Final λ Comparison')
+    
+    for bar, val in zip(bars, values):
+        ax2.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.05,
+                f'{val:.2f}', ha='center', fontsize=14, fontweight='bold')
+    
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150, bbox_inches='tight')
+    plt.close()
+    
+    return save_path
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
 
-# Plot 1: Evolution
-ax1.plot(history_no_reset, 'r-', label='No Reset', linewidth=2)
-ax1.plot(history_reset_100, 'b-', label='Reset every 100', linewidth=2)
-ax1.plot(history_reset_200, 'g-', label='Reset every 200', linewidth=2)
-ax1.axhline(y=5, color='orange', linestyle='--', alpha=0.7, label='Explosion threshold')
-ax1.set_xlabel('Steps')
-ax1.set_ylabel('Spectral Radius (λ_max)')
-ax1.set_title('Spectral Radius Evolution')
-ax1.legend()
-ax1.grid(True, alpha=0.3)
+# ═══════════════════════════════════════════════════════════════════════
+# Main
+# ═══════════════════════════════════════════════════════════════════════
 
-# Plot 2: Comparison
-strategies = ['No Reset', 'Reset 100', 'Reset 200']
-finals = [history_no_reset[-1], history_reset_100[-1], history_reset_200[-1]]
-colors = ['red', 'blue', 'green']
+def main():
+    """Run the demo."""
+    print("=" * 60)
+    print("Cicada Protocol Demo")
+    print("=" * 60)
+    print()
+    print("Config: N={}, steps={}, lr={}".format(
+        CONFIG['N'], CONFIG['steps'], CONFIG['learning_rate']))
+    print()
+    
+    # Run simulations
+    print("Running simulations...")
+    print("  1/3: No Reset...")
+    no_reset = simulate(CONFIG['N'], CONFIG['steps'], CONFIG['learning_rate'], None)
+    
+    print("  2/3: Reset every 100...")
+    reset_100 = simulate(CONFIG['N'], CONFIG['steps'], CONFIG['learning_rate'], 100)
+    
+    print("  3/3: Reset every 200...")
+    reset_200 = simulate(CONFIG['N'], CONFIG['steps'], CONFIG['learning_rate'], 200)
+    
+    # Results
+    print()
+    print("-" * 60)
+    print("RESULTS:")
+    print("-" * 60)
+    print("  No Reset     -> λ = {:.2f}".format(no_reset[-1]))
+    print("  Reset 100    -> λ = {:.2f} (↓{:.0f}%)".format(
+        reset_100[-1], (1 - reset_100[-1]/no_reset[-1]) * 100))
+    print("  Reset 200    -> λ = {:.2f} (↓{:.0f}%)".format(
+        reset_200[-1], (1 - reset_200[-1]/no_reset[-1]) * 100))
+    
+    # Plot
+    print()
+    print("Creating plot...")
+    save_path = plot(no_reset, reset_100, reset_200, 'cicada_demo_output.png')
+    print("  Saved: {}".format(save_path))
+    
+    # Key insight
+    print()
+    print("=" * 60)
+    print("KEY INSIGHT:")
+    print("=" * 60)
+    print()
+    print("Without reset: λ grows to {:.2f}".format(no_reset[-1]))
+    print("With reset:    λ stays at {:.2f}".format(reset_100[-1]))
+    print()
+    print("This demonstrates WHY periodic reset is necessary!")
+    print("=" * 60)
 
-bars = ax2.bar(strategies, finals, color=colors, alpha=0.8, edgecolor='black')
-ax2.axhline(y=5, color='orange', linestyle='--', alpha=0.7)
-ax2.set_ylabel('Final Spectral Radius')
-ax2.set_title('Final λ Comparison')
 
-for bar, val in zip(bars, finals):
-    ax2.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.2,
-            f'{val:.2f}', ha='center', fontsize=14, fontweight='bold')
-
-plt.tight_layout()
-plt.savefig('cicada_demo_output.png', dpi=150, bbox_inches='tight')
-
-print()
-print("=" * 60)
-print("KEY INSIGHT:")
-print("=" * 60)
-print(f"Without reset: λ grows to {history_no_reset[-1]:.2f}")
-print(f"With reset:    λ stays at {history_reset_100[-1]:.2f}")
-print()
-print("This demonstrates WHY periodic reset is necessary!")
-print("=" * 60)
-print()
-print(f"Plot saved: {os.path.abspath('cicada_demo_output.png')}")
-print()
-print("Next steps:")
-print("  - Try different parameters: python demo.py --N 200 --steps 1000")
-print("  - See cicada_minimal.py for more options")
-print("  - Read papers/CICADA_PAPER.md for theory")
+if __name__ == "__main__":
+    # Command-line overrides: python demo.py N steps
+    if len(sys.argv) > 1:
+        CONFIG['N'] = int(sys.argv[1])
+    if len(sys.argv) > 2:
+        CONFIG['steps'] = int(sys.argv[2])
+    
+    main()
