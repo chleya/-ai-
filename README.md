@@ -1,7 +1,7 @@
 # Cicada Protocol - 研究原型
 
 > ⚠️ **当前状态**: 研究原型阶段  
-> ✅ **核心代码**: 可运行，但待优化  
+> ✅ **核心代码**: 可运行，待优化  
 > 🎯 **目标**: 实现周期性重置维持共识长期稳定性
 
 ## 什么是 Cicada Protocol?
@@ -16,17 +16,17 @@
 
 ## 当前可运行的代码
 
-### 1. 最小演示 (推荐⭐)
+### ⭐ 最小演示 (推荐)
 
 ```bash
-python cicada_minimal.py
+python demo.py
 ```
 
 这个脚本会：
 - 运行三种策略对比（无重置/固定周期/事件触发）
-- 生成谱半径演化图 `cicada_results.png`
+- 生成谱半径演化图 `cicada_demo_output.png`
 
-### 2. 真正的演示 (无归一化)
+### ⭐ 真正的演示 (无归一化)
 
 ```bash
 python cicada_true_demo.py
@@ -37,7 +37,21 @@ python cicada_true_demo.py
 - Reset 100: λ = 0.28 (↓49%)
 - Reset 200: λ = 0.27 (↓52%)
 
-### 3. 核心模块
+### 吸引子可视化 (新!)
+
+```bash
+python visualization/visualize_attractors.py
+```
+
+生成6个可视化图表：
+1. Lorenz吸引子（混沌行为）
+2. Hebbian吸引子（2D轨迹）
+3. 谱半径演化（核心指标）
+4. 相变热图
+5. 任务切换
+6. 事件触发动态
+
+### 核心模块
 
 ```python
 from cicada.core import cicada_protocol, analyze_spectrum
@@ -53,27 +67,32 @@ print(f"λ_max: {spectrum['max']:.4f}")
 ## 项目结构
 
 ```
-├── cicada/              # Python包（开发中）
-│   ├── __init__.py      # 包入口
-│   ├── __main__.py      # 命令行入口
-│   ├── core.py          # 核心协议
-│   └── experiments.py   # 实验脚本
+├── demo.py                      # ⭐ 最小可运行演示
+├── cicada_true_demo.py         # ⭐ 真正演示
+├── cicada_minimal.py            # 最小原型
+├── test_n1000.py               # N=1000测试
 │
-├── cicada_minimal.py    # ⭐ 最小可运行原型
-├── cicada_true_demo.py  # ⭐ 真正的演示
-├── cicada_demo.py       # 演示脚本
-├── test_n1000.py        # N=1000测试
+├── cicada/                      # Python包
+│   ├── __init__.py             # 包入口
+│   ├── __main__.py             # 命令行入口
+│   ├── core.py                 # 核心协议
+│   └── experiments.py          # 实验脚本
 │
-├── requirements.txt     # 依赖
-├── setup.py            # 包配置（开发中）
+├── visualization/               # ⭐ 可视化
+│   ├── visualize_attractors.py  # 吸引子可视化 (24KB)
+│   ├── visualize_cicada.py     # 原可视化
+│   └── *.png                   # 生成的图表
 │
-└── papers/             # 论文文档
-    ├── CICADA_PAPER.md           # 完整论文
-    ├── PIVOT_THEORY.md           # 任务切换理论
+├── requirements.txt            # 依赖
+├── setup.py                    # 包配置
+│
+└── papers/                     # 论文文档
+    ├── CICADA_PAPER.md         # 完整论文v2.0
+    ├── PIVOT_THEORY.md         # 任务切换理论
     ├── PHASE_TRANSITION_REPORT.md # 相变分析
-    └── EVENT_TRIGGERED_RESET.md  # 应激蝉蜕
+    └── EVENT_TRIGGERED_RESET.md # 应激蝉蜕
 
-其他120+个.md文件多为研究迭代版本，建议参考papers/目录。
+docs_archive/                   # 归档目录 (61个旧文件)
 ```
 
 ## 安装
@@ -87,20 +106,23 @@ cd -ai-
 pip install -r requirements.txt
 
 # 运行演示
-python cicada_true_demo.py
+python demo.py
 ```
 
 ## 命令行使用
 
 ```bash
 # 运行最小演示
-python cicada_minimal.py
+python demo.py
 
-# 运行真实演示
+# 运行真正演示
 python cicada_true_demo.py
 
 # 运行N=1000测试
 python test_n1000.py
+
+# 运行可视化
+python visualization/visualize_attractors.py
 ```
 
 ## 核心结果
@@ -138,30 +160,40 @@ python test_n1000.py
 | [PIVOT_THEORY.md](papers/PIVOT_THEORY.md) | 任务切换敏捷性 |
 | [PHASE_TRANSITION_REPORT.md](papers/PHASE_TRANSITION_REPORT.md) | 相变分析 |
 | [EVENT_TRIGGERED_RESET.md](papers/EVENT_TRIGGERED_RESET.md) | 应激蝉蜕 |
+| [DYNAMICS_THEORY.md](papers/DYNAMICS_THEORY.md) | 动力学理论 |
 
-### 其他
+## 吸引子可视化说明
 
-120+个.md文件位于根目录，多为研究迭代版本，可参考但不必全读。
+### 吸引子类型
 
-## 已知问题
+| 类型 | 描述 | 协议关联 |
+|------|------|----------|
+| **点吸引子** | 稳定固定点 | 重置后的随机状态 |
+| **极限环** | 周期行为 | 固定重置间隔 |
+| **奇异吸引子** | 混沌 | 无约束Hebbian更新 |
 
-⚠️ **当前问题**：
-1. [ ] 包结构不完整（setup.py需完善）
-2. [ ] 缺少单元测试
-3. [ ] 文档需精简
-4. [ ] 缺少Jupyter notebook示例
+### 可视化内容
 
-## 下一步计划
+1. **Lorenz吸引子**: 展示无重置时的混沌行为
+2. **Hebbian吸引子**: 2D轨迹对比（有/无重置）
+3. **谱半径演化**: 核心指标λ_max随时间变化
+4. **相变热图**: N vs 生存率
+5. **任务切换**: Peak vs Random的+11.9%优势
+6. **事件触发**: α=1.6最优演示
 
-1. **短期** (1-2周)
-   - [ ] 完善setup.py使其可pip install
-   - [ ] 添加基础单元测试
-   - [ ] 精简文档到5个核心文件
+## 下步计划
 
-2. **中期** (1个月)
-   - [ ] 完善CicadaProtocol类API
-   - [ ] 添加Jupyter示例
-   - [ ] 准备OSDI/SOSP投稿
+### 短期 (1-2周)
+
+- [ ] 完善setup.py使其可pip install
+- [ ] 添加基础单元测试
+- [ ] 精简文档到5个核心文件
+
+### 中期 (1个月)
+
+- [ ] 完善CicadaProtocol类API
+- [ ] 添加Jupyter示例
+- [ ] 准备OSDI/SOSP投稿
 
 ## 贡献者
 
