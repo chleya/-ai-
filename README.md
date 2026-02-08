@@ -1,300 +1,172 @@
-# Cicada Protocol: Long-term Stability for Edge Computing Consensus
+# Cicada Protocol - 边缘计算共识长期稳定性研究
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.xxxxxx-blue.svg)](https://doi.org/10.5281/zenodo.xxxxxx)
+> **研究状态**: 理论验证完成，代码原型可用，待投稿顶会
 
-## 🌟 Overview
+## 研究简介
 
-The **Cicada Protocol** is a novel approach to maintaining long-term stability in edge computing consensus systems through **periodic system reset**. This repository contains the complete research codebase, paper, and visualizations.
+蝉蜕协议是一种通过**周期性系统重置**维持边缘计算共识长期稳定性的机制。
 
-### Key Discoveries
+### 核心发现
 
-| Discovery | Finding | Impact |
-|-----------|---------|--------|
-| **Critical Time Point** | Tc ≈ 400 steps | Long-term stability achieved |
-| **Spectral Stability** | λmax: 2.15 → 1.73 | Healthier spectrum |
-| **Phase Transition** | Nc ≈ 900 | Scale-dependent behavior |
-| **Task Switching** | Rand +11.9% faster | Forgetting is better |
-| **Event-triggered** | α = 1.6 optimal | Adaptive resilience |
+| 发现 | 内容 | 状态 |
+|------|------|------|
+| 临界时间点 | Tc ≈ 400步 | ✅ 验证 |
+| 谱稳定性 | λmax: 2.15 → 1.73 | ✅ 验证 |
+| 相变临界点 | Nc ≈ 900 | ✅ 发现 |
+| 应激蝉蜕 | α = 1.6最优 | ✅ 验证 |
+| 任务切换 | Rand比Peak快11.9% | ✅ 验证 |
 
-### Core Insight
+### 核心领悟
 
-> "Perfect immortality is unattainable, but robust renewal is achievable."
+> "完美的永生是不可能的，但鲁棒的更迭是可能的。"
 
----
-
-## 📁 Repository Structure
-
-```
-cicada_protocol/
-├── cicada/
-│   ├── __init__.py
-│   ├── core.py           # Core protocol implementation
-│   ├── experiments.py     # Experiment scripts
-│   └── analysis.py        # Analysis tools
-├── visualization/
-│   ├── visualize_cicada.py  # Animation & plotting
-│   ├── phase_transition_heatmap.png
-│   ├── efficiency_heatmap.png
-│   └── comprehensive_dashboard.png
-├── papers/
-│   ├── CICADA_PAPER.md   # Main paper (v2.0)
-│   └── SUBMISSION_PLAN.md # Submission strategy
-├── data/
-│   └── experiments/       # Experimental data
-├── tests/
-│   └── test_*.py         # Unit tests
-├── docs/
-│   └── *.md              # Documentation
-└── README.md
-```
+> "在N=1000的高维空间中，'忘记过去'可能比'记住峰值'更有价值。"
 
 ---
 
-## 🚀 Quick Start
+## 代码结构
 
-### Installation
+```
+cicada/
+├── core.py              # ✅ 核心协议实现（可用）
+├── experiments.py        # ⚠️ 部分实现
+└── analysis.py          # ⚠️ 待完善
+
+cicada_minimal.py        # ✅ 最小可运行原型（推荐新手使用）
+
+visualization/
+└── visualize_cicada.py  # ✅ 可视化工具
+
+papers/
+├── CICADA_PAPER.md      # ✅ 完整论文v2.0
+├── PIVOT_THEORY.md      # ✅ 任务切换理论
+├── PHASE_TRANSITION_REPORT.md  # ✅ 相变分析
+└── SUBMISSION_PLAN.md   # ✅ 投稿计划
+```
+
+### ❌ README里声称但实际缺失的功能
+
+| 声称的功能 | 实际状态 | 修复计划 |
+|------------|----------|----------|
+| `CicadaProtocol` 类 | 只有函数 `cicada_protocol()` | 后续添加 |
+| `python -m cicada.experiments.basic` | 模块结构不完整 | 后续完善 |
+| `LICENSE` 文件 | 缺失 | ✅ 已添加 |
+| `.gitignore` | 缺失 | ✅ 已添加 |
+| `tests/` 完整测试 | 部分实现 | 后续完善 |
+
+---
+
+## 快速开始
+
+### 方式1：运行最小原型（推荐⭐）
 
 ```bash
-git clone https://github.com/yourname/cicada_protocol.git
-cd cicada_protocol
-pip install -r requirements.txt
+# 克隆仓库
+git clone https://github.com/chleya/-ai-.git
+cd -ai-
+
+# 运行原型
+python cicada_minimal.py
 ```
 
-### Basic Usage
+这会：
+1. 运行三种策略对比（无重置/固定周期/事件触发）
+2. 生成谱半径演化图
+3. 保存结果到 `cicada_experiment_results.png`
+
+### 方式2：使用核心模块
 
 ```python
-import numpy as np
-from cicada import CicadaProtocol
+from cicada.core import cicada_protocol, analyze_spectrum
 
-# Create protocol instance
-protocol = CicadaProtocol(N=500, reset_interval=300)
+# 运行协议
+W, s = cicada_protocol(N=300, reset_interval=300, total_steps=800)
 
-# Run evolution
-W, s = protocol.evolve(total_steps=800)
-
-# Analyze results
-stats = protocol.analyze()
-print(f"Survival rate: {stats['survival']:.1%}")
-print(f"Spectral radius: {stats['lambda_max']:.3f}")
-```
-
-### Running Experiments
-
-```bash
-# Basic experiment
-python -m cicada.experiments.basic
-
-# Phase transition analysis
-python -m cicada.experiments.phase_transition
-
-# Task switching test
-python -m cicada.experiments.task_switching
-
-# Stress threshold heatmap
-python -m cicada.experiments.stress_heatmap
+# 分析谱特性
+spectrum = analyze_spectrum(W)
+print(f"λ_max: {spectrum['max']:.4f}")
+print(f"λ_ratio: {spectrum['ratio']:.4f}")
 ```
 
 ---
 
-## 📊 Key Results
+## 核心结果
 
-### Phase Transition (N vs Survival)
+### 相变实验（N vs 存活率）
 
-```
-Survival Rate (%)
-    │
-100 ┤███████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-    │███████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-    │███████████████░░░░░░░░░░░░░░░░░░░░░░░
-    │███████████████████████████░░░░░░░░░░░
-    │███████████████████████████████░░░░░░
- 60 ┤████████████████████████████████████
-    │████████████████████████████████████
-    └──────────────────────────────────── N
-     200   400   600   800  1000
-     
-     █ Peak Init    □ Random Init
-```
+| N | Peak | Rand | 差异 |
+|---|------|------|------|
+| 200 | 100% | 80% | +20% |
+| 800 | 60% | 100% | -40% |
+| 1000 | 40% | 20% | +20% |
 
-### Optimal Trigger Sensitivity
+**临界点**: Nc ≈ 900
 
-```
-Efficiency (×10³)
-    │
-318 ┤█████████████████░░░░░░░░░░░░░░░░░░░░
-    │███████████████████████████████░░░░░
-    │███████████████████████████████████
-315 ┤██████████████████████████████████████
-    │██████████████████████████████████████
-    │██████████████████████████████████████
-312 ┤██████████████████████████████████████
-    └──────────────────────────────────── α
-    1.1  1.3  1.5  1.6  1.8  2.0  3.0
-    
-    ★ Optimal: α = 1.6
-```
+### 应激蝉蜕（α vs 效率）
+
+| α | 效率 | 推荐度 |
+|---|------|--------|
+| 1.2-1.3 | 高 | ⭐⭐ 灵敏 |
+| **1.6** | **最高** | **⭐⭐⭐⭐⭐ 最佳** |
+| 2.0-3.0 | 中 | ⭐⭐⭐ 保守 |
 
 ---
 
-## 🎬 Visualizations
+## 文档说明
 
-### Spectral Radius Dynamics
+由于研究过程中产生了大量迭代文档（100+ .md文件），建议阅读：
 
-![Spectral Dynamics](visualization/spectrum_demo.gif)
+### 必读
 
-Shows how the eigenvalue spectrum evolves under attack and triggers stress rebirth.
+| 文件 | 内容 | 版本 |
+|------|------|------|
+| [CICADA_PAPER.md](papers/CICADA_PAPER.md) | 完整论文v2.0 | 最新 |
 
-### Phase Transition Heatmap
+### 选读
 
-![Phase Transition](visualization/phase_transition_heatmap.png)
+| 文件 | 内容 |
+|------|------|
+| [PIVOT_THEORY.md](papers/PIVOT_THEORY.md) | 任务切换敏捷性 |
+| [PHASE_TRANSITION_REPORT.md](papers/PHASE_TRANSITION_REPORT.md) | 相变分析 |
+| [SUBMISSION_PLAN.md](papers/SUBMISSION_PLAN.md) | 投稿计划 |
 
-Complete phase diagram showing survival rate vs system scale.
+### 归档
 
-### Comprehensive Dashboard
-
-![Dashboard](visualization/comprehensive_dashboard.png)
-
-Four-panel visualization of all key findings.
-
----
-
-## 📖 Paper
-
-**Latest Version**: [CICADA_PAPER.md](papers/CICADA_PAPER.md)
-
-### Abstract
-
-Edge computing consensus mechanisms face long-term stability challenges. Traditional evolutionary learning methods suffer from "basin collapse" over time. This paper proposes the "Cicada Protocol" - a mechanism that maintains long-term stability through periodic system reset. Through systematic experiments, we discover a critical phase transition at scale Nc≈900 and establish an isotropy theory framework explaining the geometric advantages of random initialization in high-dimensional spaces.
-
-**Keywords**: Edge Computing, Consensus Mechanism, Cicada Protocol, Spectral Stability, Phase Transition, Isotropy, Long-term Evolution
+其他 .md 文件多为研究过程中的迭代版本，建议参考论文版本。
 
 ---
 
-## 🎯 Use Cases
+## 工程文件
 
-| Scenario | Scale | Dynamics | Recommended Strategy |
-|----------|-------|----------|----------------------|
-| Industrial Sensors | N < 400 | Low | Peak Inheritance |
-| Drone Swarms | N > 900 | High | Random Reset |
-| Disaster Recovery | Any | Extreme | Random Reset |
-| Adaptive | Any | Mixed | Event-triggered Reset |
-
----
-
-## 📈 Performance
-
-### Long-term Survival Rate
-
-| Strategy | 300 steps | 500 steps | 800 steps |
-|----------|-----------|-----------|-----------|
-| No Reset | 100% | 40% | 0% |
-| Fixed-300 | 100% | 75% | 70% |
-| Event-1.6 | 100% | 78% | 75% |
-
-### Task Switching Agility
-
-| Metric | Peak | Rand | Advantage |
-|--------|------|------|-----------|
-| t=50 Correlation | 0.0190 | 0.0213 | **+11.9%** |
-| Eigen Fluctuation | 0.0150 | 0.0093 | **-38%** |
+| 文件 | 状态 | 说明 |
+|------|------|------|
+| `requirements.txt` | ✅ | 依赖列表 |
+| `LICENSE` | ✅ | MIT许可证 |
+| `.gitignore` | ✅ | Git忽略规则 |
+| `cicada_minimal.py` | ✅ | 可运行原型 |
 
 ---
 
-## 🔬 Theory
+## 贡献者
 
-### Spectral Stability
-
-The weight matrix evolves as:
-
-$$W(t+1) = W(t) + \eta \cdot s(t) \cdot s(t)^T$$
-
-Healthy spectral radius: $\lambda_{max} < 1.8$
-
-### Phase Transition
-
-Critical point where system behavior fundamentally changes:
-
-$$N_c \approx 900$$
-
-### Isotropy Theory
-
-Random initialization provides:
-- **Directional uniformity**: $\rho(\theta) = \text{const}$
-- **High-dimensional advantage**: $\text{rank}(W_{rand}) = N$
-- **No manifold locking**: $\text{supp}(W_{rand}) = \mathbb{R}^N$
+- **研究方向**: Chen Leiyang
+- **AI辅助**: OpenClaw Assistant
 
 ---
 
-## 🛠️ Development
+## 许可证
 
-### Running Tests
-
-```bash
-# All tests
-pytest tests/ -v
-
-# Specific test
-pytest tests/test_core.py -v
-
-# With coverage
-pytest tests/ --cov=cicada
-```
-
-### Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing`)
-5. Open a Pull Request
-
-### Style Guide
-
-- Python: PEP 8
-- Documentation: Google style
-- Commits: Conventional Commits
+MIT License - 详见 [LICENSE](LICENSE)
 
 ---
 
-## 📚 Citation
+## 注意事项
 
-If you use Cicada Protocol in your research, please cite:
-
-```bibtex
-@article{cicada_protocol_2026,
-  title={Cicada Protocol: Long-term Stability for Edge Computing Consensus},
-  author={[Author Name]},
-  journal={},
-  year={2026},
-  note={Available at: https://github.com/yourname/cicada_protocol}
-}
-```
+⚠️ **本项目处于研究早期阶段**：
+- 代码经过理论验证，待大规模实验复现
+- 部分模块结构待完善
+- 欢迎Issue讨论和贡献
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🤝 Contact
-
-- **Main Author**: OpenClaw AI Assistant
-- **Email**: [email protected]
-- **Project Link**: [https://github.com/yourname/cicada_protocol](https://github.com/yourname/cicada_protocol)
-
----
-
-## 🙏 Acknowledgments
-
-- Statistical Physics community for isotropy theory
-- Distributed Systems community for consensus mechanisms
-- Machine Learning community for evolutionary learning
-
----
-
-**Last Updated**: 2026-02-08
-**Version**: 2.0.0
+*最后更新: 2026-02-08*
