@@ -1,0 +1,27 @@
+[
+  {
+    "N": 100,
+    "best_interval": 50,
+    "reduction": 37.653455517413015
+  },
+  {
+    "N": 200,
+    "best_interval": 50,
+    "reduction": 35.47082144030931
+  },
+  {
+    "N": 400,
+    "best_interval": 50,
+    "reduction": 36.471299137573595
+  },
+  {
+    "N": 600,
+    "best_interval": 50,
+    "reduction": 34.544857583609314
+  },
+  {
+    "N": 800,
+    "best_interval": 50,
+    "reduction": 31.35493851354738
+  }
+]

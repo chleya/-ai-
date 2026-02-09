@@ -1,0 +1,37 @@
+[
+  {
+    "alpha": 1.2,
+    "final_lambda": 1.5775061817289826,
+    "max_lambda": 2.1796496430300674,
+    "reset_count": 10,
+    "status": "Unstable"
+  },
+  {
+    "alpha": 1.4,
+    "final_lambda": 2.0402037173964667,
+    "max_lambda": 2.582619749786218,
+    "reset_count": 6,
+    "status": "Unstable"
+  },
+  {
+    "alpha": 1.6,
+    "final_lambda": 2.706817093897082,
+    "max_lambda": 2.9428905762413757,
+    "reset_count": 4,
+    "status": "Unstable"
+  },
+  {
+    "alpha": 1.8,
+    "final_lambda": 2.999495113032832,
+    "max_lambda": 3.2901868138272734,
+    "reset_count": 3,
+    "status": "Unstable"
+  },
+  {
+    "alpha": 2.0,
+    "final_lambda": 3.494832968348783,
+    "max_lambda": 3.632569041698325,
+    "reset_count": 2,
+    "status": "Unstable"
+  }
+]

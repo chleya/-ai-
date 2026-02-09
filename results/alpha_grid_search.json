@@ -1,0 +1,39 @@
+{
+  "alpha": [
+    1.2,
+    1.4,
+    1.6,
+    1.8,
+    2.0
+  ],
+  "final_lambda": [
+    1.86,
+    1.816,
+    2.496,
+    2.014,
+    3.061
+  ],
+  "max_lambda": [
+    2.201,
+    2.583,
+    2.951,
+    3.29,
+    3.633
+  ],
+  "resets": [
+    16,
+    10,
+    7,
+    6,
+    4
+  ],
+  "stable": [
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "lr": 0.005,
+  "note": "Event-triggered threshold: lambda > threshold * alpha"
+}

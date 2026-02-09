@@ -1,0 +1,43 @@
+{
+  "basic_improvement": -1.25,
+  "noise": [
+    {
+      "noise": 0.2,
+      "imp": 0.0,
+      "with": 100.0,
+      "without": 100.0
+    },
+    {
+      "noise": 0.5,
+      "imp": 0.0,
+      "with": 100.0,
+      "without": 100.0
+    },
+    {
+      "noise": 0.8,
+      "imp": 0.0,
+      "with": 100.0,
+      "without": 100.0
+    },
+    {
+      "noise": 1.0,
+      "imp": 0.0,
+      "with": 100.0,
+      "without": 100.0
+    }
+  ],
+  "complexity": [
+    {
+      "classes": 3,
+      "imp": 0.0
+    },
+    {
+      "classes": 5,
+      "imp": 0.0
+    },
+    {
+      "classes": 7,
+      "imp": -1.25
+    }
+  ]
+}

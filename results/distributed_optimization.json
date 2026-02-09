@@ -1,0 +1,54 @@
+{
+  "quadratic": {
+    "50": {
+      "no_cicada": {
+        "loss": 9.018086773209221,
+        "converged": 0.0
+      },
+      "with_cicada": {
+        "loss": 9.018086773209221,
+        "converged": 0.0
+      }
+    },
+    "100": {
+      "no_cicada": {
+        "loss": 15.524357657893008,
+        "converged": 0.0
+      },
+      "with_cicada": {
+        "loss": 15.524357657893008,
+        "converged": 0.0
+      }
+    },
+    "200": {
+      "no_cicada": {
+        "loss": 24.51370303025267,
+        "converged": 0.0
+      },
+      "with_cicada": {
+        "loss": 24.51370303025267,
+        "converged": 0.0
+      }
+    },
+    "500": {
+      "no_cicada": {
+        "loss": 38.351972649116306,
+        "converged": 0.0
+      },
+      "with_cicada": {
+        "loss": 38.351972649116306,
+        "converged": 0.0
+      }
+    }
+  },
+  "nonconvex": {
+    "no_cicada": {
+      "loss": 6.704910765428521,
+      "converged": 0.0
+    },
+    "with_cicada": {
+      "loss": 6.704910765428521,
+      "converged": 0.0
+    }
+  }
+}

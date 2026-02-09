@@ -1,0 +1,58 @@
+{
+  "parameters": {
+    "N_values": [
+      20,
+      50,
+      100,
+      200
+    ],
+    "steps": 200,
+    "seeds": 5
+  },
+  "with_vs_without": {
+    "no_cicada": {
+      "error": 0.17039771883959645,
+      "converged": 0.2
+    },
+    "with_cicada": {
+      "error": 0.17039771883959645,
+      "converged": 0.2
+    }
+  },
+  "scale_test": [
+    {
+      "N": 20,
+      "error": 0.06888744271956634,
+      "converged": 0.8
+    },
+    {
+      "N": 50,
+      "error": 0.17039771883959645,
+      "converged": 0.2
+    },
+    {
+      "N": 100,
+      "error": 0.2408813188744788,
+      "converged": 0.0
+    },
+    {
+      "N": 200,
+      "error": 0.22925011696607442,
+      "converged": 0.0
+    }
+  ],
+  "topology_test": [
+    {
+      "topology": "ring",
+      "error": 0.17039771883959645
+    },
+    {
+      "topology": "random",
+      "error": 8.087373160330712e-06
+    },
+    {
+      "topology": "fully",
+      "error": 4.701963638472055e-10
+    }
+  ]
+}
